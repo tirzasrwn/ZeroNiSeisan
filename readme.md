@@ -11,3 +11,5 @@ Learning rust for production ready.
 - clippy
 - rustfmt
 - cargo-audit
+- clang
+- lld
