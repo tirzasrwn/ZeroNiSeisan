@@ -2,7 +2,7 @@
 
 ## About
 
-Learning rust for production ready.
+Learning rust for production ready. zero2seisan should be read in Japanese, zero ni seisan (０ に 生産), means zero to production.
 
 ## Requirement
 
@@ -16,12 +16,20 @@ Learning rust for production ready.
 - sqlx-cli
 - postgresql-client-14
 - postgresql-client-common
+- cargo-undeps
+- bunyan
 
 ## Command
 
 ```sh
-# cargo check, test, and run on save.
+# Install nightly compiler.
+rustup toolchain install nightly --allow-downgrade
+# Linux watch like. Run cargo check, test, and run on save.
 cargo watch -x check -x test -x run
+# Enable trace log.
+RUST_LOG=trace cargo run
+# Pipe the output to bunyan for more readeble output.
+RUST_LOG=trace cargo run | bunyan
 ```
 
 ## Database migration
