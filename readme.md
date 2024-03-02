@@ -30,6 +30,10 @@ cargo watch -x check -x test -x run
 RUST_LOG=trace cargo run
 # Pipe the output to bunyan for more readeble output.
 RUST_LOG=trace cargo run | bunyan
+# Build docker image.
+docker build --tag zero2seisan --file Dockerfile .
+# Generate .sqlx directory for offline mode sqlx.
+cargo sqlx prepare --workspace
 ```
 
 ## Database migration
