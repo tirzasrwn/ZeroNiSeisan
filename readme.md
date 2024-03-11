@@ -32,6 +32,8 @@ RUST_LOG=trace cargo run
 RUST_LOG=trace cargo run | bunyan
 # Build docker image.
 docker build --tag zero2seisan --file Dockerfile .
+# Run docker image.
+docker run -p 8000:8000 zero2seisan
 # Generate .sqlx directory for offline mode sqlx.
 cargo sqlx prepare --workspace
 ```
@@ -43,4 +45,10 @@ export DATABASE_URL=postgres://postgres:password@127.0.0.1:5432/newsletter
 sqlx database create
 sqlx migrate add create_subscriptions_table
 sqlx migrate run
+```
+
+## Curl Test
+
+```sh
+curl -d "name=le%20guin&email=ursula_le_guin%40gmail.com" -X POST http://localhost:8000/subscriptions -v
 ```
